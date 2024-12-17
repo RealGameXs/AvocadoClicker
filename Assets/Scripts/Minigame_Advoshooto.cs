@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Minigame-Advoshooto : MonoBehaviour
+public class Minigame_Advoshooto : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
