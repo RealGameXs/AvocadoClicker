@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class CharacterCreatorData : MonoBehaviour
 {
+    [SerializeField] List<CharacterItem> CharacterItems = new();
 
-    private void Start()
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
-        //EnemyData[] enemies = LoadAllFromResources<EnemyData>("Enemies");
+        CharacterItem[] allCharacterItems = Resources.LoadAll<CharacterItem>("CharacterItems");
+        List<CharacterItem> ItemList = new(allCharacterItems);
 
-        //foreach (var enemy in enemies)
-        //{
-        //    Debug.Log("Loaded enemy: " + enemy.name);
-        //}
+        foreach (CharacterItem Item in ItemList)
+        {
+            CharacterItems.Add(Item);
+            Debug.Log(Item._customiserType);
+            Debug.Log(Item._name);
+            Debug.Log(Item._image);
+        }
     }
-
 }
