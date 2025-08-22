@@ -33,5 +33,14 @@ public class MenuManager : MonoBehaviour
     {
         open = !open;
         PauseMenu.SetActive(open);
+
+        if (open)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
 }

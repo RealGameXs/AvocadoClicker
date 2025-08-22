@@ -15,6 +15,7 @@ public class SceneHandler : MonoBehaviour
     public void LoadScene(string sceneToLoad)
     {
         SceneManager.LoadScene(sceneToLoad);
+        Time.timeScale = 1f;
     }
     public void QuitGame()
     {

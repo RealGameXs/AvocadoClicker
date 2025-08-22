@@ -15,13 +15,14 @@ public class CurrencyManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-        if (Instance != this)
+        if (Instance != null && Instance != this)
         {
-            Destroy(Instance);
+            Destroy(gameObject);
         }
-        if (Instance == null)
+        else
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
     void Start()
