@@ -4,7 +4,9 @@ using UnityEngine;
 
 public enum CustomiserType
 {
-    HeadWear,
+    Hats,
+    Hair,
+    FaceAttributes,
     FacialHair,
     BodyColor
 }
