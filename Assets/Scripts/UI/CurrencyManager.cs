@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CurrencyManager : MonoBehaviour
 {
@@ -25,28 +26,43 @@ public class CurrencyManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    void Start()
+    private void Start()
     {
         GameObject go = GameObject.FindGameObjectWithTag("ScoreSign");
         currencyDisplay = go.GetComponent<TMP_Text>();
+    }
+
+    void OnEnable()
+    {
+        // Subscribe to the event
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Scene Switch");
+        GameObject go = GameObject.FindGameObjectWithTag("ScoreSign");
+        if (go) currencyDisplay = go.GetComponent<TMP_Text>();
+
+        UpdateCurrencyDisplay();
     }
 
     #region Currency Handling
     public void IncrementCurrency(float incrementAmount)
     {
         currency += incrementAmount;
-        updateCurrencyDisplay();
+        UpdateCurrencyDisplay();
     }
 
     public void DecrementCurrency(float decrementAmount)
     {
         currency -= decrementAmount;
-        updateCurrencyDisplay();
+        UpdateCurrencyDisplay();
     }
 
-    void updateCurrencyDisplay()
+    void UpdateCurrencyDisplay()
     {
-        currencyDisplay.text = currency.ToString();
+        if (currencyDisplay) currencyDisplay.text = currency.ToString();
     }
     #endregion
 }

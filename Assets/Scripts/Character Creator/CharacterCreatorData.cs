@@ -173,4 +173,9 @@ public class CharacterCreatorData : MonoBehaviour
         open = !open;
         creationPanel.SetActive(open);
     }
+
+    public void ApplySkinToAvocado()
+    {
+        //GameObject avocado = 
+    }
 }
