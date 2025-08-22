@@ -27,8 +27,16 @@ public class CharacterCreatorData : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
-        Instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
