@@ -8,21 +8,21 @@ using Unity.VisualScripting;
 using UnityEditor.Timeline.Actions;
 using UnityEditorInternal.VersionControl;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharacterCreatorData : MonoBehaviour
 {
     public static CharacterCreatorData Instance { get; private set; }
 
-    [SerializeField] CustomiserType[] types;
     [Tooltip("Hat, Hair, FaceAttributes, FacialHair, BodyColor")]
-    [SerializeField] List<Image> avocadoParts = new();
+    [SerializeField] List<Image> avocadoPreviewParts = new();
 
     [SerializeField] GameObject creationPanel;
     [SerializeField] Transform tabList;
     [SerializeField] GameObject selectionBarPrefab;
 
-    [SerializeField] Dictionary<string, List<CharacterItem>> categories = new Dictionary<string, List<CharacterItem>>();
+    [SerializeField] Dictionary<string, List<CharacterItem>> categories = new();
     private List<int> currentCategoryIndex = new();
 
     private void Awake()
@@ -39,12 +39,25 @@ public class CharacterCreatorData : MonoBehaviour
 
     }
 
+    #region OnSceneSwitch
+    void OnEnable()
+    {
+        // Subscribe to the event
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ApplySkinToAvocado();
+    }
+    #endregion
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         creationPanel.SetActive(false);//hides menu if it is still open
 
-        types = (CustomiserType[])Enum.GetValues(typeof(CustomiserType));
+        CustomiserType[] types = (CustomiserType[])Enum.GetValues(typeof(CustomiserType));
 
         // Add a new item
         //categories["Potions"].Add("Invisibility Potion");
@@ -92,6 +105,7 @@ public class CharacterCreatorData : MonoBehaviour
                 currentItemName.text = firstItem._name;
 
                 SetSkin(index);
+                ApplySkinToAvocado();
             }
 
             int generatedIndex = index;
@@ -150,19 +164,19 @@ public class CharacterCreatorData : MonoBehaviour
         switch (firstItem._customiserType)
         {
             case CustomiserType.Hats:
-                avocadoParts[0].sprite = firstItem._image;
+                avocadoPreviewParts[0].sprite = firstItem._image;
                 break;
             case CustomiserType.Hair:
-                avocadoParts[1].sprite = firstItem._image;
+                avocadoPreviewParts[1].sprite = firstItem._image;
                 break;
             case CustomiserType.FaceAttributes:
-                avocadoParts[2].sprite = firstItem._image;
+                avocadoPreviewParts[2].sprite = firstItem._image;
                 break;
             case CustomiserType.FacialHair:
-                avocadoParts[3].sprite = firstItem._image;
+                avocadoPreviewParts[3].sprite = firstItem._image;
                 break;
             case CustomiserType.BodyColor:
-                avocadoParts[4].sprite = firstItem._image;
+                avocadoPreviewParts[4].sprite = firstItem._image;
                 break;
         }
     }
@@ -176,6 +190,9 @@ public class CharacterCreatorData : MonoBehaviour
 
     public void ApplySkinToAvocado()
     {
-        //GameObject avocado = 
+        GameObject avocado = GameObject.FindGameObjectWithTag("Avocado");
+
+        avocado.GetComponent<Image>().sprite = avocadoPreviewParts[4].sprite; //bodycolor
+        avocado.transform.GetChild(0).GetComponent<Image>().sprite = avocadoPreviewParts[0].sprite;
     }
 }
