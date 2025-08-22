@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01abfa6d5b4467b489d3a4517b7e9454, type: 3}
-  m_Name: Top Hat 1
+  m_Name: Yellow Top Hat 7
   m_EditorClassIdentifier: 
   _customiserType: 0
-  _name: Bowler
-  _image: {fileID: 0}
+  _name: Yellow Top Hat
+  _image: {fileID: 21300000, guid: 4c0ff7c1e9bb83548bc8e97b3b4bc7e9, type: 3}

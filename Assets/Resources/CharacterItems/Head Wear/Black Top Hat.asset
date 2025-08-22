@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01abfa6d5b4467b489d3a4517b7e9454, type: 3}
-  m_Name: Green
+  m_Name: Black Top Hat
   m_EditorClassIdentifier: 
-  _customiserType: 4
-  _name: Green
-  _image: {fileID: 21300000, guid: 78bbb9faaf304664380fcee1dbffe068, type: 3}
+  _customiserType: 0
+  _name: Black Top Hat
+  _image: {fileID: 21300000, guid: 818999ce33a7f07498ad9cd33dd82b39, type: 3}

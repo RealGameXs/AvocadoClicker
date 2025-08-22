@@ -5,22 +5,37 @@ using System.Linq;
 using System.Reflection;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.Timeline.Actions;
+using UnityEditorInternal.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CharacterCreatorData : MonoBehaviour
 {
-    [SerializeField] CustomiserType[] types;
+    public static CharacterCreatorData Instance { get; private set; }
 
+    [SerializeField] CustomiserType[] types;
+    [Tooltip("Hat, Hair, FaceAttributes, FacialHair, BodyColor")]
+    [SerializeField] List<Image> avocadoParts = new();
+
+    [SerializeField] GameObject creationPanel;
     [SerializeField] Transform tabList;
     [SerializeField] GameObject selectionBarPrefab;
 
     [SerializeField] Dictionary<string, List<CharacterItem>> categories = new Dictionary<string, List<CharacterItem>>();
-    List<int> currentCategoryIndex = new();
+    private List<int> currentCategoryIndex = new();
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+        Instance = this;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        creationPanel.SetActive(false);//hides menu if it is still open
+
         types = (CustomiserType[])Enum.GetValues(typeof(CustomiserType));
 
         // Add a new item
@@ -67,6 +82,8 @@ public class CharacterCreatorData : MonoBehaviour
                 var indexCategory = categories.ElementAt(index);
                 CharacterItem firstItem = indexCategory.Value[0];
                 currentItemName.text = firstItem._name;
+
+                SetSkin(index);
             }
 
             int generatedIndex = index;
@@ -79,7 +96,7 @@ public class CharacterCreatorData : MonoBehaviour
         }
     }
 
-    private void CharacterItemChange(string LeftOrRight, TMP_Text currentItemName, int index)
+    void CharacterItemChange(string LeftOrRight, TMP_Text currentItemName, int index)
     {
         var currentCategory = categories.ElementAt(index);
 
@@ -87,7 +104,7 @@ public class CharacterCreatorData : MonoBehaviour
         {
             if (currentCategoryIndex[index] == 0)
             {
-                
+
                 currentCategoryIndex[index] = currentCategory.Value.Count - 1;
             }
             else
@@ -112,6 +129,40 @@ public class CharacterCreatorData : MonoBehaviour
             var indexCategory = categories.ElementAt(index);
             CharacterItem firstItem = indexCategory.Value[currentCategoryIndex[index]];
             currentItemName.text = firstItem._name;
+
+            SetSkin(index);
         }
+    }
+
+    void SetSkin(int index)
+    {
+        var indexCategory = categories.ElementAt(index);
+        CharacterItem firstItem = indexCategory.Value[currentCategoryIndex[index]];
+
+        switch (firstItem._customiserType)
+        {
+            case CustomiserType.Hats:
+                avocadoParts[0].sprite = firstItem._image;
+                break;
+            case CustomiserType.Hair:
+                avocadoParts[1].sprite = firstItem._image;
+                break;
+            case CustomiserType.FaceAttributes:
+                avocadoParts[2].sprite = firstItem._image;
+                break;
+            case CustomiserType.FacialHair:
+                avocadoParts[3].sprite = firstItem._image;
+                break;
+            case CustomiserType.BodyColor:
+                avocadoParts[4].sprite = firstItem._image;
+                break;
+        }
+    }
+
+    bool open = false;
+    public void ToggleSkinMenu()
+    {
+        open = !open;
+        creationPanel.SetActive(open);
     }
 }
