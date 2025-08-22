@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customiserType: 0
   _name: Black Top Hat
-  _image: {fileID: 21300000, guid: 818999ce33a7f07498ad9cd33dd82b39, type: 3}
+  _image: {fileID: 21300000, guid: 6878125bccccda3408cf354628f701a0, type: 3}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customiserType: 0
   _name: Orange Top Hat
-  _image: {fileID: 21300000, guid: 4e35ac822a0934b4893be09df2928b2f, type: 3}
+  _image: {fileID: 21300000, guid: 25664d9fc8f99df458f290ddef285c92, type: 3}

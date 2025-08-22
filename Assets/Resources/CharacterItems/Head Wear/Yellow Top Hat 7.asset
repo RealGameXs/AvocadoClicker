@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customiserType: 0
   _name: Yellow Top Hat
-  _image: {fileID: 21300000, guid: 4c0ff7c1e9bb83548bc8e97b3b4bc7e9, type: 3}
+  _image: {fileID: 21300000, guid: e178eba571a042a4990639d579622bb0, type: 3}
