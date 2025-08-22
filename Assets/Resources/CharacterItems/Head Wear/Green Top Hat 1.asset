@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customiserType: 0
   _name: Green Top Hat
-  _image: {fileID: 21300000, guid: 5847980e45323bd4bb766f5716eafdb6, type: 3}
+  _image: {fileID: 21300000, guid: e282cfbecff4d884f9ddbd14759faa07, type: 3}

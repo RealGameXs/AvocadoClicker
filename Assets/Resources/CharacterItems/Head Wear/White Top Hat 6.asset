@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customiserType: 0
   _name: White Top Hat
-  _image: {fileID: 21300000, guid: ec659b394cfd9f744af312981e1ce481, type: 3}
+  _image: {fileID: 21300000, guid: f662d3ca582684d43b5f479fdcc8cc5f, type: 3}

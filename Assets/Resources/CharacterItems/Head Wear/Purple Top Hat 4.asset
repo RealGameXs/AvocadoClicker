@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customiserType: 0
   _name: Purple Top Hat
-  _image: {fileID: 21300000, guid: 3133fb45b219f1f40aaf04d6f3c0c1e0, type: 3}
+  _image: {fileID: 21300000, guid: 1f7430e353ba29847ad316b9574daed9, type: 3}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customiserType: 0
   _name: Blue Top Hat
-  _image: {fileID: 21300000, guid: 6a745a3b426f7734182027d57009397e, type: 3}
+  _image: {fileID: 21300000, guid: ad76986ebb8614c4f87c1ff1eed0eca5, type: 3}

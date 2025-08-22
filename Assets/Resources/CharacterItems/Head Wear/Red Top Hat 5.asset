@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customiserType: 0
   _name: Red Top Hat
-  _image: {fileID: 21300000, guid: 2ce3d3cf7a3eec246bd18fbd16d0a038, type: 3}
+  _image: {fileID: 21300000, guid: bc4039b77cace9740a2ba81b9bc6bc37, type: 3}

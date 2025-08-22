@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customiserType: 0
   _name: Pink Top Hat
-  _image: {fileID: 21300000, guid: b757256b7df1c6d478b355c2e9a0909d, type: 3}
+  _image: {fileID: 21300000, guid: 3d371229165bc7d43a90544d1828d626, type: 3}
