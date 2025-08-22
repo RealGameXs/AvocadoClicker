@@ -71,18 +71,16 @@ public class CharacterCreatorData : MonoBehaviour
 
             int generatedIndex = index;
 
-            Button btnLeft = InstantiatedGameobject.transform.GetChild(3).GetComponent<Button>();
-            Button btnRight = InstantiatedGameobject.transform.GetChild(4).GetComponent<Button>();
-            Debug.Log(btnRight + " " + btnLeft);
-            btnLeft.onClick.AddListener(() => CharacterItemChange("Left", currentItemName, generatedIndex)); //Generates Left button properties
-            btnRight.onClick.AddListener(() => CharacterItemChange("Right", currentItemName, generatedIndex)); //Generates Left button properties
+            //Button btnLeft = InstantiatedGameobject.transform.GetChild(3).GetComponent<Button>();
+            //Button btnRight = InstantiatedGameobject.transform.GetChild(4).GetComponent<Button>();
+            InstantiatedGameobject.transform.GetChild(3).GetComponent<Button>().onClick.AddListener(() => CharacterItemChange("Left", currentItemName, generatedIndex)); //Generates Left button properties
+            InstantiatedGameobject.transform.GetChild(4).GetComponent<Button>().onClick.AddListener(() => CharacterItemChange("Right", currentItemName, generatedIndex)); //Generates Left button properties
             index++;
         }
     }
 
     private void CharacterItemChange(string LeftOrRight, TMP_Text currentItemName, int index)
     {
-        Debug.Log("Clicked to change");
         var currentCategory = categories.ElementAt(index);
 
         if (LeftOrRight == "Left")
